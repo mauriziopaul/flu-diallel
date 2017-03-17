@@ -25,7 +25,8 @@ This repository may be updated post-publication. A static version of the data, s
 
 ## More Information
 
-> Please visit my website for more information about my research: https://mauriziopaul.github.io/ 
+> For more information about my research interests, please visit https://mauriziopaul.github.io/.
+> To learn more about research in the Valdar and Heise labs, please visit https://valdarlab.unc.edu and https://unclineberger.org/people/mark-heise.
 
 ## Key References
 
