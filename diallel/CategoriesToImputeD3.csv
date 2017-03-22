@@ -1,0 +1,17 @@
+dam,sire,Sex,bat,action
+A,A,M,23,+
+A,A,M,23,+
+D,D,M,1,+
+F,B,M,23,+
+F,F,M,9,+
+F,G,M,75,+
+F,H,M,75,+
+G,E,M,77,+
+G,E,M,77,+
+H,D,M,56,+
+A,A,F,12,+
+F,C,F,84,+
+G,E,F,92,+
+H,F,F,92,+
+H,G,F,53,+
+D,F,F,92,-

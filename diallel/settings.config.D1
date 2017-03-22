@@ -1,0 +1,49 @@
+datafile FluDiData.csv
+MIMPlist MIMQ_List.txt
+imputefile CategoriesToImputeD1.csv
+phenotype pct_D1
+#assignment D2
+assignment D4
+phenImpute pct_D1
+covImpute D0
+savedir imputation-3-D1
+
+## PostPredImputeR
+reps	3
+
+covbatch Block
+covrandom NULL
+covfixed NULL
+covType pre
+covBS FALSE
+
+phenbatch Block
+phenrandom NULL
+phenfixed D0
+phenType post
+phenBS FALSE
+
+## Matching
+strategy three-to-one
+
+## PileMakeR - parallel jobs
+num_piles	3
+
+## InnerRun/PostRun
+trt_colname Trt
+trt_string FLU
+ctrl_string MOCK
+subset	All
+subset_colname	NA
+contrast	NA
+type	MP
+
+## BayesDiallel
+batch	Block
+random  NULL
+fixed	D0
+numChains	5
+lengthChains	3000
+burnin	500
+thin	100
+BS	TRUE
