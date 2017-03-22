@@ -5,7 +5,6 @@ phenotype pct_D4
 assignment D4
 phenImpute pct_D4
 covImpute D0
-#savedir imputation-100-D4-twoToOne
 savedir imputation-1000-D4
 
 ## PostPredImputeR

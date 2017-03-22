@@ -3,7 +3,7 @@ flu-diallel
 
 ## Summary
 
-This respository contains data and code required to reproduce analysis for an infection diallel, using influenza A virus (H1N1) in inbred and F1 mice (n=1,043). The working title for this project is: "Diallel analysis reveals heritable additive and non-additive effects driving influenza virus severity". This research has been submitted for publication as Maurizio et al., 2017, in *G3: Genes, Genomes, Genetics* (submitted 2017-01-05, in revision).
+This respository contains data and code required to reproduce analysis for an infection diallel, using influenza A virus (H1N1) in inbred and F1 mice (n=1,043). The working title for this project is: "Diallel analysis reveals heritable additive and non-additive effects driving influenza virus severity". This research has been submitted for publication as Maurizio et al., 2017, in *G3: Genes, Genomes, Genetics* (submitted 2017-01-05).
 
 This repository may be updated post-publication. A static version of the data, software, and scripts used to analyze this data upon submission is available at DOI: [10.5281/zenodo.293015](http://dx.doi.org/10.5281/zenodo.293015).
 
@@ -22,8 +22,6 @@ This repository may be updated post-publication. A static version of the data, s
 2. **Diploffect** http://valdarlab.unc.edu/software/Diploffect/build/html/index.html
 
 3. **treatmentResponseDiallel** https://mauriziopaul.github.io/treatmentResponseDiallel
-
-## Scripts
 
 ## More Information
 

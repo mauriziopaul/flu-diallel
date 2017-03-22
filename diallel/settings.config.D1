@@ -2,14 +2,13 @@ datafile FluDiData.csv
 MIMPlist MIMQ_List.txt
 imputefile CategoriesToImputeD1.csv
 phenotype pct_D1
-#assignment D2
 assignment D4
 phenImpute pct_D1
 covImpute D0
-savedir imputation-3-D1
+savedir imputation-1000-D1
 
 ## PostPredImputeR
-reps	3
+reps	1000
 
 covbatch Block
 covrandom NULL
@@ -27,7 +26,7 @@ phenBS FALSE
 strategy three-to-one
 
 ## PileMakeR - parallel jobs
-num_piles	3
+num_piles	45
 
 ## InnerRun/PostRun
 trt_colname Trt
