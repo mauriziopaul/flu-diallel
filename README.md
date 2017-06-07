@@ -21,7 +21,7 @@ This repository may be updated post-publication. A static version of the data, s
 
 2. **Diploffect** http://valdarlab.unc.edu/software/diploffect/index.html
 
-3. **treatmentResponseDiallel** https://mauriziopaul.github.io/treatmentResponseDiallel
+3. **treatmentResponseDiallel** https://github.com/mauriziopaul/treatmentResponseDiallel
 
 ## More Information
 
