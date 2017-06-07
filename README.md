@@ -19,7 +19,7 @@ This repository may be updated post-publication. A static version of the data, s
 
 1. **BayesDiallel** http://valdarlab.unc.edu/software/bayesdiallel/BayesDiallel.html
 
-2. **Diploffect** http://valdarlab.unc.edu/software/Diploffect/build/html/index.html
+2. **Diploffect** http://valdarlab.unc.edu/software/diploffect/index.html
 
 3. **treatmentResponseDiallel** https://mauriziopaul.github.io/treatmentResponseDiallel
 
