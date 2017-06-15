@@ -30,6 +30,8 @@ This repository may be updated post-publication. A static version of the data, s
 
 ## Key References
 
+Maurizio PL & Ferris MT (2017) “Chapter 28: The Collaborative Cross Resource for Systems Genetics Research of Infectious Diseases.” *Methods in Molecular Biology: Systems Genetics – Methods and Protocols*. Springer Science+Business Media, New York, NY. Klaus Schughart and Robert W. Williams (eds.) 1488:579-596. eBook ISBN: 978-1-4939-6427-7, hardcover ISBN: 978-1-4939-6425-3. doi: [10.1007/978-1-4939-6427-7_28](https://doi.org/10.1007/978-1-4939-6427-7_28)
+
 Zhang Z, Wang W, Valdar W (2014) Bayesian modeling of haplotype effects in multiparent populations. *Genetics* 198(1):139-56. doi: [10.1534/genetics.114.166249](http://dx.doi.org/10.1534/genetics.114.166249)
 
 Crowley JJ, Kim Y, Lenarcic AB, Quackenbush CR, Barrick C, Adkins DE, Shaw GS, Miller DR, Pardo Manuel de Villena F, Sullivan PF, Valdar W (2014) Genetics of adverse reactions to haloperidol in a mouse diallel: A drug-placebo experiment and Bayesian causal analysis. *Genetics* 196(1):321-47. doi: [10.1534/genetics.113.156901](http://dx.doi.org/10.1534/genetics.113.156901)
