@@ -5,7 +5,7 @@ flu-diallel
 
 This respository contains data and code required to reproduce analysis for an infection diallel, using influenza A virus (H1N1) in inbred and F1 mice (n=1,043). The working title for this project is: "Diallel analysis reveals _Mx1_-dependent and independent effects driving influenza virus severity". This research has been submitted for publication as Maurizio et al., 2017, in *G3: Genes, Genomes, Genetics* (submitted 2017-01-05).
 
-This repository may be updated post-publication. A static version of the data, software, and scripts used to analyze this data upon submission is available at DOI: [10.5281/zenodo.293015](http://dx.doi.org/10.5281/zenodo.293015).
+This repository may be updated post-publication. A static version of the data, software, and scripts used to analyze this data will be made available upon submission at DOI: [10.5281/zenodo.293015](http://dx.doi.org/10.5281/zenodo.293015).
 
 ## Data Sets
 
