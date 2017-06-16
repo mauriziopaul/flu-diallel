@@ -7,6 +7,10 @@ This respository contains data and code required to reproduce analysis for an in
 
 This repository may be updated post-publication. A static version of the data, software, and scripts used to analyze this data will be made available upon submission at DOI: [10.5281/zenodo.293015](http://dx.doi.org/10.5281/zenodo.293015).
 
+## Presentation
+
+Learn more about this study via slides I presented at the Complex Trait Community [Meeting](http://www.complextrait.org/ctc2017/) in Memphis, TN (June 16, 2017): [CTC-2017-Maurizio](https://github.com/mauriziopaul/flu-diallel/blob/master/CTC_Memphis_2017_Maurizio_Final.pdf).
+
 ## Data Sets
 
 1. **FluDiData.csv**
