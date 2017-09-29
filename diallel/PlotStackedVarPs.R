@@ -23,9 +23,9 @@ PSq$id <- factor(PSq$id, levels = c("D4",
                                     "D1"))
 PSq$X <- simplify.labels(PSq$X)
 PSq <- subset(PSq, X %in% c("additive", "maternal", 
-             "inbreed.overall", "inbreeding", "symmetric.epistatic", "asymmetric.epistatic",
-             "female.overall", "sex-by-additive","sex-by-maternal", "female.inbred", "sex-by-inbreeding", 
-             "sex-by-symmetric.epistatic", 	"sex-by-asymmetric.epistatic", "total.explained"))
+                            "inbred.overall", "inbred", "symmetric.epistatic", "asymmetric.epistatic",
+                            "female.overall", "sex-by-additive","sex-by-maternal", "female.inbred", "sex-by-inbred", 
+                            "sex-by-symmetric.epistatic",   "sex-by-asymmetric.epistatic", "total.explained"))
 cbPalette <- c(brewer.pal(12, "Paired"), "#2aa198", "black")
 
 #cbPalette <- c(	"#009E73", "#E69F00", "#56B4E9", "#0072B2",
@@ -38,8 +38,8 @@ PSq$order <- factor(as.character(PSq$ordernum), levels=as.factor(c(1:14)))
 PSq$color <- cbPalette[PSq$ordernum]
 PSq <- PSq[with(PSq, order(revid, ordernum)),]
 PSq$labels <- rep(c("additive", "maternal", 
-                "inbreed (overall)", "inbreeding", "symmetric epistatic", "asymmetric epistatic",
-                "female (overall)", "f:additive","f:maternal", "female inbreeding (overall)", "f:inbreeding", 
+                "inbred (overall)", "inbred", "symmetric epistatic", "asymmetric epistatic",
+                "female (overall)", "f:additive","f:maternal", "female inbred (overall)", "f:inbred", 
                 "f:symmetric epistatic", 	"f:asymmetric epistatic", "total explained"), 4)
 
 PSqBup <- PSq
@@ -58,12 +58,12 @@ PSq$dummy <- 1
 
 PSq$X <- as.factor(PSq$X)
 PSq$X <- factor(PSq$X, levels=c("additive", "maternal", 
-                                "inbreed.overall", "inbreeding", "symmetric.epistatic", "asymmetric.epistatic",
-                                "female.overall", "sex-by-additive","sex-by-maternal", "female.inbred", "sex-by-inbreeding", 
+                                "inbred.overall", "inbred", "symmetric.epistatic", "asymmetric.epistatic",
+                                "female.overall", "sex-by-additive","sex-by-maternal", "female.inbred", "sex-by-inbred", 
                                 "sex-by-symmetric.epistatic", 	"sex-by-asymmetric.epistatic"))
 PSq$revX <- factor(PSq$X, levels = rev(c("additive", "maternal", 
-                                         "inbreed.overall", "inbreeding", "symmetric.epistatic", "asymmetric.epistatic",
-                                         "female.overall", "sex-by-additive","sex-by-maternal", "female.inbred", "sex-by-inbreeding", 
+                                         "inbred.overall", "inbred", "symmetric.epistatic", "asymmetric.epistatic",
+                                         "female.overall", "sex-by-additive","sex-by-maternal", "female.inbred", "sex-by-inbred", 
                                          "sex-by-symmetric.epistatic", 	"sex-by-asymmetric.epistatic")))
 
 p2 <- ggplot(PSq, aes(x = dummy, y = mean, fill = revX)) +
@@ -106,8 +106,8 @@ PSq$id <- factor(PSq$id, levels = c("D4",
                                     "D1"))
 PSq$X <- simplify.labels(PSq$X)
 PSq <- subset(PSq, X %in% c("additive", "maternal", 
-                            "inbreed.overall", "inbreeding", "symmetric.epistatic", "asymmetric.epistatic",
-                            "female.overall", "sex-by-additive","sex-by-maternal", "female.inbred", "sex-by-inbreeding", 
+                            "inbred.overall", "inbred", "symmetric.epistatic", "asymmetric.epistatic",
+                            "female.overall", "sex-by-additive","sex-by-maternal", "female.inbred", "sex-by-inbred", 
                             "sex-by-symmetric.epistatic", 	"sex-by-asymmetric.epistatic", "total.explained"))
 
 PSq$revX <- factor(as.factor(PSq$X), levels = rev(levels(as.factor(PSq$X))))
@@ -117,8 +117,8 @@ PSq$order <- factor(as.character(PSq$ordernum), levels=as.factor(c(1:14)))
 PSq$color <- cbPalette[PSq$ordernum]
 PSq <- PSq[with(PSq, order(revid, ordernum)),]
 PSq$labels <- rep(c("additive", "maternal", 
-                    "inbreed (overall)", "inbreeding", "symmetric epistatic", "asymmetric epistatic",
-                    "female (overall)", "f:additive","f:maternal", "female inbreeding (overall)", "f:inbreeding", 
+                    "inbreed (overall)", "inbred", "symmetric epistatic", "asymmetric epistatic",
+                    "female (overall)", "f:additive","f:maternal", "female inbred (overall)", "f:inbred", 
                     "f:symmetric epistatic", 	"f:asymmetric epistatic", "total explained"), 4)
 
 PSqBup <- PSq
@@ -137,12 +137,12 @@ PSq$dummy <- 1
 
 PSq$X <- as.factor(PSq$X)
 PSq$X <- factor(PSq$X, levels=c("additive", "maternal", 
-                                "inbreed.overall", "inbreeding", "symmetric.epistatic", "asymmetric.epistatic",
-                                "female.overall", "sex-by-additive","sex-by-maternal", "female.inbred", "sex-by-inbreeding", 
+                                "inbred.overall", "inbred", "symmetric.epistatic", "asymmetric.epistatic",
+                                "female.overall", "sex-by-additive","sex-by-maternal", "female.inbred", "sex-by-inbred", 
                                 "sex-by-symmetric.epistatic", 	"sex-by-asymmetric.epistatic"))
 PSq$revX <- factor(PSq$X, levels = rev(c("additive", "maternal", 
-                                         "inbreed.overall", "inbreeding", "symmetric.epistatic", "asymmetric.epistatic",
-                                         "female.overall", "sex-by-additive","sex-by-maternal", "female.inbred", "sex-by-inbreeding", 
+                                         "inbred.overall", "inbred", "symmetric.epistatic", "asymmetric.epistatic",
+                                         "female.overall", "sex-by-additive","sex-by-maternal", "female.inbred", "sex-by-inbred", 
                                          "sex-by-symmetric.epistatic", 	"sex-by-asymmetric.epistatic")))
 
 p2.mx <- ggplot(PSq, aes(x = dummy, y = mean, fill = revX)) +
