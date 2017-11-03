@@ -1,0 +1,13 @@
+*.Rout
+*.RDS
+*.jpg
+*.RData
+*.bin
+*.png
+.Rproj.user
+*.Rhistory
+*.pdf
+*.csv
+.DS_Store
+*.out
+*.history

@@ -2,7 +2,7 @@ datafile FluDiData.csv
 MIMPlist MIMQ_List.txt
 imputefile CategoriesToImputeD1.csv
 phenotype pct_D1
-assignment D4
+assignment D2
 phenImpute pct_D1
 covImpute D0
 savedir imputation-1000-D1

@@ -13,8 +13,9 @@
 library(cmdline)
 library(configfile)
 
-args <- c(cmdline.string("configfile"))
+args <- c(cmdline.string("configfile"), cmdline.string("MIMPlist"))
 confile   	<- args[[1]]
+MIMPlist	<- args[[2]]
 config <- read.configfile(confile)
 source("loadConfig.R")
 

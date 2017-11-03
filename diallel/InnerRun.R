@@ -18,11 +18,11 @@ library(treatmentResponseDiallel)
 
 args <- c(cmdline.string("configfile"), cmdline.string("f"))
 confile   	<- args[[1]]
-config <- read.configfile(confile)
-source("loadConfig.R")
 datafile	<- args[[2]]
+config <- read.configfile(confile)
 savedir			<- file_path_sans_ext(datafile)
 dir.create(savedir, recursive=TRUE, showWarnings=FALSE)
+source("loadConfig.R")
 
 sink(file.path(savedir, "output_innerrunner.out"))
 

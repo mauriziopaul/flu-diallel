@@ -1,14 +1,16 @@
 # 1) Install INLA (http://www.r-inla.org/download)
-# 2) Move contents of Diploffect_experimental/src here
-# 3) Install bagpipe backend with `R CMD install --clean --no-docs bagpipe.backend_0.34.tar.gz`
-# 4) Updated versions available here: http://valdarlab.unc.edu/software/bagpipe/_build/html/bagpipe.html#r-bagpipe-backend
-# 5) To run this script without error, I needed to make the following modification to the file
-##   `/usr/local/lib/R/3.3/site-library/INLA/bin/mac/64bit/inla.run`, since the default /usr/lib version of liblzma.5.dylib
+# 2) To run this script without error, I needed to make the following modification to the file
+##   `/usr/local/lib/R/3.4/site-library/INLA/bin/mac/64bit/inla.run`, since the default /usr/lib version of liblzma.5.dylib
 ##   is the wrong version. Change the line:
 ##      export DYLD_LIBRARY_PATH="$RHOME_LIB:$DIR:/usr/lib:/opt/local/lib:$DYLD_LIBRARY_PATH"
 ##   to 
 ##      export DYLD_LIBRARY_PATH="$RHOME_LIB:$DIR:/usr/local/opt/xz/lib:/usr/lib:/opt/local/lib:$DYLD_LIBRARY_PATH"source("source.scripts.diploffect.R")
-source("source.scripts.diploffect.R")
+
+library("Diploffect.INLA")
+library("INLA")
+library("lme4")
+library("DOQTL") # source("https://bioconductor.org/biocLite.R"); biocLite("DOQTL")
+library("miqtl") # devtools::install_github("gkeele/miqtl")
 dir.create("plots", recursive=TRUE, showWarnings=FALSE)
 
 ####################################### CC-RIX data with all the weight loss time point information
@@ -18,7 +20,6 @@ ccrix.data$SUBJECT.NAME <- ccrix.data$ID # Unique ids for each mouse
 ccrix.data$eff.strain <- as.integer(ccrix.data$ccrix)
 
 ## Regressing out certain fixed and random effects; is.baric indicates location of infections: Heise Lab (0) or Baric Lab (1)
-library(lme4)
 lmer.frame <- model.frame(D7pct ~ D0 + is.baric + Mating + Date_Infected + ccrix + eff.strain + SUBJECT.NAME, data=ccrix.data) # keep ccrix in data frame
 initial.lmer.fit <- lmer(D7pct ~ 1 + D0 + is.baric + (1|Mating) + (1|Date_Infected), data=ccrix.data)
 
@@ -36,9 +37,8 @@ colnames(count.data)[2] <- "NUM.OBS"
 mean.data <- merge(merge(mean.data.unscaled, mean.data.scaled, by="ccrix"), count.data, by="ccrix")
 mean.data$SUBJECT.NAME <- mean.data$ccrix
 mean.data <- mean.data[,-1]
-write.table(mean.data, "mean-Flu-U19-weights-20161018-03.txt", col.names=TRUE, row.names=FALSE, quote=FALSE, sep="\t")
 
-### Make Kinship - add small noise on diagonal to make it non-singular
+### Make Breeding Kinship - add small noise on diagonal to make it non-singular
 ids <- mean.data$SUBJECT.NAME[!is.na(mean.data$SUBJECT.NAME)]
 K <- matrix(NA, nrow=length(ids), ncol=length(ids))
 for(i in 1:(length(ids)-1)){
@@ -53,26 +53,33 @@ K[length(ids), length(ids)] <- 1
 colnames(K) <- rownames(K) <- ids
 K <- K + diag(nrow(K))*0.000001
 
-### Model using scaled means of raw data
-D7.inla.diploffect.UNC27478095.model3.scaled_means <- run.diploffect.inla.through.genomecache(formula=D7pct_resid_scaled ~ 1 + locus.full, data=mean.data, K=K,
-                                                                                              genomecache="./segments_happy_format/", locus="UNC27478095",
-                                                                                              num.draws=100, 
-                                                                                              seed=1, gamma.rate=1, impute.on="SUBJECT.NAME", weights.on="NUM.OBS",
-                                                                                              do.augment.of.cache=FALSE)
-D7.inla.diploffect.UNC27478095.model3.scaled_means.summary <- run.diploffect.inla.summary.stats(D7.inla.diploffect.UNC27478095.model3.scaled_means)
-saveRDS(D7.inla.diploffect.UNC27478095.model3.scaled_means, "D7.inla.diploffect.UNC27478095.model3.scaled_means.RDS")
-saveRDS(D7.inla.diploffect.UNC27478095.model3.scaled_means.summary, "D7.inla.diploffect.UNC27478095.model3.scaled_means.summary.RDS")
-#D7.inla.diploffect.UNC27478095.model3.means_of_scaled.summary <- readRDS("D7.inla.diploffect.UNC27478095.model3.scaled_means.summary.RDS")
-#D7.inla.diploffect.UNC27478095.model3.scaled_means.summary <- readRDS("D7.inla.diploffect.UNC27478095.model3.scaled_means.summary.RDS")
+### Load Realized Kinship
+# K.realized <- calc.kinship.from.genomecache.with.DOQTL(genomecache = "./segments_happy_format/",
+#                                                        model = "additive")
+# ids <- ids[ids %in% rownames(K.realized)] #103 levels in cache
+# K.realized <- K.realized[rownames(K.realized) %in% ids, colnames(K.realized) %in% ids]
+# K <- K.realized
+# saveRDS(K.realized, "CC-RIX-kinship.RDS")
 
-#pdf("plots/cc-rix_scaled_means_effect_plots.pdf", height=10, width=7.5)
-pdf("plots/cc-rix_scaled_means_effect_plots.pdf", height=15, width=15)
+K <- readRDS("CC-RIX-kinship.RDS")
+
+### Model using scaled means of raw data
+averaged.probs <- readRDS("averaged_probs_ISVdb.RDS")
+D7.effect.scaled_means <- run.diploffect.inla(formula=D7pct_resid_scaled ~ 1, data=mean.data, K=K, 
+                                       add.only=FALSE, prob.matrix=averaged.probs,
+                                       num.draws=100, seed=1, gamma.rate=1, impute.on="SUBJECT.NAME", weights.on="NUM.OBS")
+D7.effect.scaled_means.summary <- run.diploffect.inla.summary.stats(D7.effect.scaled_means)
+#joint.samples <- D7.effect.scaled_means$results$joint.posterior.samples
+
+pdf("cc-rix_scaled_means_realized_K_newprobs.pdf", height=10, width=8)
+#pdf("cc-rix_scaled_means_realized_K_newprobs01.pdf", height=15, width=15)
 par(mfrow=c(2,2))
-plot.straineff.ci(D7.inla.diploffect.UNC27478095.model3.scaled_means.summary, flip=FALSE)
-plot.diplotype.ci(D7.inla.diploffect.UNC27478095.model3.scaled_means.summary, flip=FALSE)
-plot.deviation.ci(D7.inla.diploffect.UNC27478095.model3.scaled_means.summary, flip=FALSE)
-plot.varexp.ci(D7.inla.diploffect.UNC27478095.model3.scaled_means.summary, add.numbers=TRUE)
+plot_straineff.ci(D7.effect.scaled_means.summary, flip=FALSE)
+plot_diplotype.ci(D7.effect.scaled_means.summary, flip=FALSE)
+plot_deviation.ci(D7.effect.scaled_means.summary, flip=FALSE)
+plot_varexp.ci(D7.effect.scaled_means.summary, add.numbers=TRUE)
 dev.off()
 
-
+saveRDS(D7.effect.scaled_means.summary, "D7.effect.scaled_means.summary.RDS")
+saveRDS(D7.effect.scaled_means, "D7.effect.scaled_means.RDS")
 
