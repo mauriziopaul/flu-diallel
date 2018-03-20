@@ -3,7 +3,7 @@ flu-diallel
 
 ## Summary
 
-This respository contains data and code required to reproduce analysis for an infection diallel, using influenza A virus (H1N1) in inbred and F1 mice (n=1,043). The working title for this project is: "Diallel analysis reveals _Mx1_-dependent and _Mx1_-independent effects on response to influenza A virus in mice". Our manuscript is provisionally accepted for publication.
+This respository contains data and code required to reproduce analysis for an infection diallel, using influenza A virus (H1N1) in inbred and F1 mice (n=1,043). The title for this project is: "Bayesian diallel analysis reveals _Mx1_-dependent and _Mx1_-independent effects on response to influenza A virus in mice". Our manuscript has been published in _G3_: [http://www.g3journal.org/content/8/2/427](http://www.g3journal.org/content/8/2/427).
 
 This repository may be updated post-publication. A static version of the data, software, and scripts used to analyze this data is available at DOI: [10.5281/zenodo.293015](http://dx.doi.org/10.5281/zenodo.293015).
 
